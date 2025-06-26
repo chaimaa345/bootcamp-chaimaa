@@ -1,4 +1,12 @@
-INSERT INTO items (desk, price) VALUES
-('Small Desk', 100),
-('Large Desk', 300),
-('Fan', 80);
+CREATE TABLE items (
+    item_id SERIAL PRIMARY KEY,
+    desk VARCHAR(50) NOT NULL,
+    price SMALLINT NOT NULL
+);
+
+-- Créer la table customers
+CREATE TABLE customers (
+    customer_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(100) NOT NULL
+);
