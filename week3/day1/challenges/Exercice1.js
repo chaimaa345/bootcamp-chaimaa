@@ -16,5 +16,3 @@ if (wordNot !== -1 && wordBad !== -1 && wordBad > wordNot) {
   // Otherwise, print original sentence
   console.log(sentence);
 }
-console.log(wordNot);
-console.log(wordBad);
