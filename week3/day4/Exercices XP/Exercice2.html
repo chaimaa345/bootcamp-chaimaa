@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Exercise</title>
+</head>
+<body>
+
+<form id="userForm">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="firstname"><br>
+
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lastname"><br><br>
+
+  <input type="submit" value="Submit" id="submit">
+</form> 
+
+<ul class="usersAnswer"></ul>
+
+<script>
+  // 1. Retrieve and log the form
+  const form = document.getElementById("userForm");
+  console.log("Form element:", form);
+
+  // 2. Retrieve inputs by their ID and log them
+  const firstNameInput = document.getElementById("fname");
+  const lastNameInput = document.getElementById("lname");
+  console.log("By ID - First Name:", firstNameInput);
+  console.log("By ID - Last Name:", lastNameInput);
+
+  // 3. Retrieve inputs by their name and log them
+  const inputsByName = document.getElementsByName("firstname");
+  console.log("By Name - firstname:", inputsByName[0]);
+
+  // 4. Submit event listener
+  form.addEventListener("submit", function(event) {
+    event.preventDefault(); // ❗ Prevents page from refreshing
+
+    const firstName = firstNameInput.value.trim();
+    const lastName = lastNameInput.value.trim();
+
+    // Validate inputs are not empty
+    if (firstName === "" || lastName === "") {
+      alert("Both fields are required!");
+      return;
+    }
+
+    // 5. Create list items and add to <ul>
+    const ul = document.querySelector(".usersAnswer");
+    ul.innerHTML = ""; // Clear previous answers
+
+    const li1 = document.createElement("li");
+    li1.textContent = firstName;
+    ul.appendChild(li1);
+
+    const li2 = document.createElement("li");
+    li2.textContent = lastName;
+    ul.appendChild(li2);
+
+    // Optional: clear input fields
+    firstNameInput.value = "";
+    lastNameInput.value = "";
+  });
+</script>
+
+</body>
+</html>
