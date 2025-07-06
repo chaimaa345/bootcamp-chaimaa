@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Move the Box</title>
+  <style>
+    #container {
+      width: 400px;
+      height: 400px;
+      position: relative;
+      background: yellow;
+      border: 1px solid black;
+    }
+
+    #animate {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      background-color: red;
+    }
+
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <p><button onclick="myMove()">Click Me</button></p>
+
+  <div id="container">
+    <div id="animate"></div>
+  </div>
+
+  <script>
+    function myMove() {
+      const box = document.getElementById("animate");
+      let position = 0;
+
+      // Prevent multiple clicks from starting multiple intervals
+      clearInterval(window.moveInterval);
+
+      window.moveInterval = setInterval(() => {
+        if (position >= 350) {
+          clearInterval(window.moveInterval);
+        } else {
+          position++;
+          box.style.left = position + "px";
+        }
+      }, 1); // move 1px every 1 millisecond
+    }
+  </script>
+
+</body>
+</html>
