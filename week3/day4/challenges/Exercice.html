@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Challenge: Mad Libs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    input {
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 12px;
+    }
+
+    #story {
+      font-weight: bold;
+      color: darkblue;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Mad Libs</h1>
+
+  <form id="libform">
+    <label for="noun">Noun:</label>
+    <input type="text" id="noun">
+
+    <label for="adjective">Adjective:</label>
+    <input type="text" id="adjective">
+
+    <label for="person">Someone's Name:</label>
+    <input type="text" id="person">
+
+    <label for="verb">Verb:</label>
+    <input type="text" id="verb">
+
+    <label for="place">A place:</label>
+    <input type="text" id="place">
+
+    <button id="lib-button">Lib it!</button>
+  </form>
+
+  <button id="shuffle-button" style="display: none;">Shuffle Story</button>
+
+  <p>Generated story: <span id="story"></span></p>
+
+  <script>
+    const form = document.getElementById("libform");
+    const libButton = document.getElementById("lib-button");
+    const shuffleButton = document.getElementById("shuffle-button");
+
+    const nounInput = document.getElementById("noun");
+    const adjectiveInput = document.getElementById("adjective");
+    const personInput = document.getElementById("person");
+    const verbInput = document.getElementById("verb");
+    const placeInput = document.getElementById("place");
+
+    const storySpan = document.getElementById("story");
+
+    let userWords = {};
+    let storyTemplates = [
+      (n, a, p, v, pl) => `${p} went to ${pl} with a ${a} ${n} to ${v}.`,
+      (n, a, p, v, pl) => `In ${pl}, ${p} saw a ${n} so ${a} it started to ${v}!`,
+      (n, a, p, v, pl) => `Did you know ${p} can ${v} a ${a} ${n} in ${pl}? Amazing!`,
+      (n, a, p, v, pl) => `${p} brought a ${a} ${n} to ${pl}, just to ${v} with it.`,
+      (n, a, p, v, pl) => `Everyone at ${pl} laughed when ${p} tried to ${v} the ${a} ${n}.`
+    ];
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // Get values
+      const noun = nounInput.value.trim();
+      const adjective = adjectiveInput.value.trim();
+      const person = personInput.value.trim();
+      const verb = verbInput.value.trim();
+      const place = placeInput.value.trim();
+
+      // Validation
+      if (!noun || !adjective || !person || !verb || !place) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      // Store words for shuffle use
+      userWords = { noun, adjective, person, verb, place };
+
+      // Generate and show story
+      const story = getRandomStory(userWords);
+      storySpan.textContent = story;
+
+      // Show shuffle button
+      shuffleButton.style.display = "inline-block";
+    });
+
+    // BONUS: Shuffle story using same inputs
+    shuffleButton.addEventListener("click", () => {
+      if (Object.keys(userWords).length === 0) return;
+
+      const newStory = getRandomStory(userWords);
+      storySpan.textContent = newStory;
+    });
+
+    // Helper: Generate a random story using a random template
+    function getRandomStory({ noun, adjective, person, verb, place }) {
+      const randomIndex = Math.floor(Math.random() * storyTemplates.length);
+      return storyTemplates[randomIndex](noun, adjective, person, verb, place);
+    }
+  </script>
+
+</body>
+</html>
+
