@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Validate Email (No Regex)</title>
+  <style>
+    #message {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="emailForm">
+    <label for="email">Enter your email:</label>
+    <input type="email" id="email" name="email" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="message"></p>
+
+  <script>
+    const form = document.getElementById('emailForm');
+    const emailInput = document.getElementById('email');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Stop form from actually submitting
+
+      const email = emailInput.value;
+
+      // Manual checks without regex
+      const atPosition = email.indexOf("@");
+      const dotPosition = email.lastIndexOf(".");
+
+      if (
+        atPosition > 0 &&                     // At least one character before @
+        dotPosition > atPosition + 1 &&       // At least one character between @ and .
+        dotPosition < email.length - 1        // At least one character after .
+      ) {
+        message.textContent = "Valid email address!";
+        message.style.color = "green";
+      } else {
+        message.textContent = "Invalid email address.";
+        message.style.color = "red";
+      }
+    });
+  </script>
+
+</body>
+</html>

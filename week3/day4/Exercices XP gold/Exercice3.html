@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    form, ul {
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 8px 12px;
+      margin-left: 10px;
+      font-size: 16px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    li {
+      padding: 4px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="root"></div>
+
+  <script>
+    // Create empty shopping list array
+    let shoppingList = [];
+
+    // Get the root div
+    const root = document.getElementById("root");
+
+    // Create form elements
+    const form = document.createElement("form");
+
+    const input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "What do you need?";
+    input.required = true;
+
+    const addButton = document.createElement("button");
+    addButton.type = "submit";
+    addButton.textContent = "Add Item";
+
+    form.appendChild(input);
+    form.appendChild(addButton);
+
+    // Create the list display (ul)
+    const listDisplay = document.createElement("ul");
+
+    // Create the ClearAll button
+    const clearButton = document.createElement("button");
+    clearButton.textContent = "Clear All";
+
+    // Add everything to the root
+    root.appendChild(form);
+    root.appendChild(listDisplay);
+    root.appendChild(clearButton);
+
+    // Add item function
+    function addItem(event) {
+      event.preventDefault(); // prevent form reload
+
+      const item = input.value.trim();
+      if (item !== "") {
+        shoppingList.push(item);
+        displayList();
+        input.value = ""; // clear input field
+      }
+    }
+
+    // Display the list
+    function displayList() {
+      // Clear the current list first
+      listDisplay.innerHTML = "";
+
+      // Rebuild list items
+      shoppingList.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.textContent = `${index + 1}. ${item}`;
+        listDisplay.appendChild(li);
+      });
+    }
+
+    // Clear all function
+    function clearAll() {
+      shoppingList = [];
+      listDisplay.innerHTML = "";
+    }
+
+    // Event listeners
+    form.addEventListener("submit", addItem);
+    clearButton.addEventListener("click", clearAll);
+  </script>
+
+</body>
+</html>

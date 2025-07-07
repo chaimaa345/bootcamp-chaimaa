@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Music Genre Selector</title>
+</head>
+<body>
+
+  <h2>Select your favorite music genre:</h2>
+
+  <select id="genres">
+    <option value="rock">Rock</option>
+    <option value="blues" selected>Blues</option>
+  </select>
+
+  <p id="output"></p>
+
+  <script>
+    const select = document.getElementById("genres");
+    const output = document.getElementById("output");
+
+    // Display current selected value on page load
+    output.textContent = "Selected genre: " + select.value;
+
+    // Update when the user selects a different option
+    select.addEventListener("change", function () {
+      output.textContent = "Selected genre: " + this.value;
+    });
+
+    // Create a new option element
+    const newOption = document.createElement("option");
+    newOption.value = "classic";
+    newOption.textContent = "Classic";
+    newOption.selected = true; // Set it as the default selection
+
+    // Add it to the select dropdown
+    select.appendChild(newOption);
+  </script>
+
+</body>
+</html>

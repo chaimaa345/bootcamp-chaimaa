@@ -1,0 +1,58 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 10px;
+}
+
+.container {
+  display: flex;
+  border: 2px solid #444;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background-color: #ccc;
+  border-right: 2px solid #444;
+}
+
+#clearBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.palette {
+  display: grid;
+  grid-template-columns: repeat(3, 40px);
+  gap: 5px;
+}
+
+.color {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #444;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(60, 15px);
+  grid-template-rows: repeat(30, 15px);
+  gap: 1px;
+  padding: 10px;
+  background: white;
+}
+
+.square {
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  border: 1px solid #eee;
+}
+
+
+

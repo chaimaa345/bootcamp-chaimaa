@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tip Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f9f9f9;
+    }
+
+    label, input, select, button {
+      display: block;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    input, select {
+      padding: 8px;
+      width: 200px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #totalTip {
+      display: none; /* Hidden until calculated */
+      margin-top: 20px;
+      font-size: 18px;
+      color: green;
+      font-weight: bold;
+    }
+
+    #each {
+      font-weight: normal;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💰 Tip Calculator</h1>
+
+  <label for="billAmt">Bill Amount:</label>
+  <input type="text" id="billAmt" placeholder="Enter bill amount">
+
+  <label for="serviceQual">Service Quality:</label>
+  <select id="serviceQual">
+    <option value="0">-- Choose an option --</option>
+    <option value="0.3">30% - Excellent</option>
+    <option value="0.2">20% - Good</option>
+    <option value="0.15">15% - Average</option>
+    <option value="0.1">10% - Poor</option>
+    <option value="0.05">5% - Terrible</option>
+  </select>
+
+  <label for="numOfPeople">Number of People:</label>
+  <input type="text" id="numOfPeople" placeholder="e.g. 2">
+
+  <button id="calculate">Calculate</button>
+
+  <div id="totalTip">
+    Tip amount: <span id="tip"></span> <span id="each">each</span>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
