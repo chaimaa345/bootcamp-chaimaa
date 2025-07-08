@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Juice Bar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    #juice {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-left: 5px solid #4caf50;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Juice Bar!</h1>
+  <div id="juice"></div>
+
+  <script>
+    // ------- PART I -------
+    function makeJuicePartOne(size) {
+      function addIngredients(ing1, ing2, ing3) {
+        const message = `Part I → The client wants a ${size} juice, containing ${ing1}, ${ing2}, ${ing3}.`;
+        document.getElementById("juice").textContent = message;
+      }
+
+      addIngredients("apple", "banana", "ginger");
+    }
+
+    makeJuicePartOne("medium");
+
+
+    // ------- PART II -------
+    function makeJuicePartTwo(size) {
+      const ingredients = [];
+
+      function addIngredients(ing1, ing2, ing3) {
+        ingredients.push(ing1, ing2, ing3);
+      }
+
+      function displayJuice() {
+        const message = `Part II → The client wants a ${size} juice, containing ${ingredients.join(", ")}.`;
+        document.getElementById("juice").textContent = message;
+      }
+
+      addIngredients("carrot", "mint", "lemon");
+      addIngredients("cucumber", "orange", "turmeric");
+
+      displayJuice();
+    }
+
+    // Delay Part II a bit so you see both outputs
+    setTimeout(() => {
+      makeJuicePartTwo("large");
+    }, 3000); // 3-second delay before Part II runs
+  </script>
+</body>
+</html>
+
