@@ -1,0 +1,51 @@
+body {
+  background-color: #1c1c1c;
+  color: white;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  padding: 40px;
+}
+
+#quoteText {
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+#quoteAuthor {
+  color: #00e6ac;
+  font-weight: bold;
+}
+
+input, button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+#filterForm input {
+  width: 50%;
+}
+
+#filterForm button {
+  background-color: transparent;
+  border: 1px solid green;
+  color: green;
+  margin-left: 10px;
+}
+
+.nav-buttons {
+  margin-top: 20px;
+}
+
+#prevBtn {
+  background-color: transparent;
+  color: red;
+  border: 1px solid red;
+  margin-right: 20px;
+}
+
+#nextBtn {
+  background-color: transparent;
+  color: blue;
+  border: 1px solid blue;
+}
