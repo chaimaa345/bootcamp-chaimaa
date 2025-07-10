@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form to JSON</title>
+</head>
+<body>
+  <!-- Form -->
+  <input type="text" id="name" placeholder="First name">
+  <input type="text" id="lastname" placeholder="Last name">
+  <button id="sendBtn">Send</button>
+
+  <!-- Area to display JSON -->
+  <p id="output"></p>
+
+  <script>
+    // Get elements
+    const nameInput = document.getElementById('name');
+    const lastnameInput = document.getElementById('lastname');
+    const sendBtn = document.getElementById('sendBtn');
+    const output = document.getElementById('output');
+
+    // Add click event
+    sendBtn.addEventListener('click', function() {
+      // Get values
+      const name = nameInput.value;
+      const lastname = lastnameInput.value;
+
+      // Create object
+      const obj = {
+        name: name,
+        lastname: lastname
+      };
+
+      // Convert to JSON string
+      const jsonStr = JSON.stringify(obj);
+
+      // Show on page
+      output.textContent = jsonStr;
+    });
+  </script>
+</body>
+</html>
