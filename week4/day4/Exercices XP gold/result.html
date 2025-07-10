@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Result Page</title>
+</head>
+<body>
+  <h2>Received Data</h2>
+  <section id="display"></section>
+
+  <script>
+    // Get URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name');
+    const lastname = params.get('lastname');
+
+    // Create content string
+    const content = `Name: ${name}, Lastname: ${lastname}`;
+
+    // Display in section
+    document.getElementById('display').textContent = content;
+  </script>
+</body>
+</html>
