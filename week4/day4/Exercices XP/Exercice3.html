@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSON Mario Example</title>
+</head>
+<body>
+  <h1>Check Console & Use Breakpoint Example</h1>
+  <p>Open your console and sources tab to see the JSON object!</p>
+
+  <script>
+    const marioGame = {
+      detail: "An amazing game!",
+      characters: {
+        mario: {
+          description: "Small and jumpy. Likes princesses.",
+          height: 10,
+          weight: 3,
+          speed: 12,
+        },
+        bowser: {
+          description: "Big and green, Hates princesses.",
+          height: 16,
+          weight: 6,
+          speed: 4,
+        },
+        princessPeach: {
+          description: "Beautiful princess.",
+          height: 12,
+          weight: 2,
+          speed: 2,
+        }
+      },
+    };
+    /* What happens to nested objects?
+All nested objects (like characters, mario, bowser, etc.) are also converted to JSON strings automatically.
+
+They keep their nested structure.
+
+They become part of the overall JSON string. */
+     // Compact JSON
+    let jsonString = JSON.stringify(marioGame);
+    console.log(jsonString);
+     // Pretty printed JSON
+    let prettyJSON = JSON.stringify(marioGame, null, 2);
+    console.log(prettyJSON);
+     //The 2 means indent using 2 spaces.
+    //Makes it easier for humans to read.
+      // 👉 You can add a breakpoint here
+  </script>
+</body>
+</html>

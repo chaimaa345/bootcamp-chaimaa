@@ -1,0 +1,23 @@
+<form action="" method="post">
+  <label for="name">Name</label><br>
+  <input type="text" id="name" name="name"><br><br>
+
+  <label for="comments">Comments</label><br>
+  <textarea id="comments" name="comments"></textarea><br><br>
+
+  <input type="submit" value="Send">
+</form>
+<!--   What happens when you click "Send"?
+The data is sent to the server in the body of the HTTP request, not in the URL.
+
+The browser’s URL does NOT show the data (unlike with GET).  
+
+Where can you see the data?
+ In the Network tab of your browser dev tools
+Open Developer Tools (usually F12 or right-click → Inspect → Network tab).
+ Click "Send" on your form.
+You will see a new network request (it might say "document" or show your file name).
+Click on that request.
+Look at the Headers or Payload section:
+
+You will see something like: name=chaimaa&comments=beautiful+view       -->
