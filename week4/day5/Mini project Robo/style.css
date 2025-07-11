@@ -1,0 +1,81 @@
+/* General Reset */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('card-pattern.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
+}
+
+
+/* Header Section */
+header {
+  background: #7ee081;
+  padding: 1rem;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Search Box */
+#searchBox {
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 1rem;
+  width: 250px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* Robot Cards Container */
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Individual Robot Card */
+.card {
+  background: #64dcdc;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  width: 200px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Robot Image */
+.card img {
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+}
+
+/* Robot Name */
+.card h2 {
+  margin: 10px 0 5px 0;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+/* Robot Email + Username */
+.card p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: #111;
+  word-wrap: break-word;
+}
+
