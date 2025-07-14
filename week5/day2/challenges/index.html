@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Giphy Random GIF Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    .gif-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .gif-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      position: relative;
+    }
+
+    .gif-box img {
+      max-width: 200px;
+      display: block;
+    }
+
+    .gif-box button {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Random Giphy GIF Finder</h1>
+
+  <form id="gifForm">
+    <input type="text" id="searchInput" placeholder="Enter a category..." required>
+    <button type="submit">Search GIF</button>
+  </form>
+
+  <button id="deleteAllBtn">DELETE ALL</button>
+
+  <div class="gif-container" id="gifContainer"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

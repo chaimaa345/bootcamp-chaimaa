@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sunrise Time Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      text-align: center;
+    }
+
+    input {
+      margin: 5px;
+      padding: 5px;
+    }
+
+    button {
+      padding: 5px 10px;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Find Sunrise Times</h1>
+
+  <form id="sunriseForm">
+    <h3>City 1</h3>
+    <input type="text" id="lat1" placeholder="Latitude (e.g. 48.864716)" required>
+    <input type="text" id="lng1" placeholder="Longitude (e.g. 2.349014)" required>
+    
+    <h3>City 2</h3>
+    <input type="text" id="lat2" placeholder="Latitude (e.g. 40.730610)" required>
+    <input type="text" id="lng2" placeholder="Longitude (e.g. -73.935242)" required>
+    
+    <br><br>
+    <button type="submit">Get Sunrise Times</button>
+  </form>
+
+  <div class="result" id="results"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
