@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Giphy Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #gifContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .gif {
+      max-width: 200px;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Giphy Category Search</h1>
+
+  <form id="gifForm">
+    <input type="text" id="searchInput" placeholder="Search category" required>
+    <button type="submit">Find</button>
+    <button type="button" id="deleteAllBtn">Delete</button>
+  </form>
+
+  <div id="gifContainer"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
