@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Star Wars Web App</title>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+
+  <!-- FontAwesome Spinner Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+  <!-- Optional: Star Wars Font -->
+  <!-- <link href="https://fonts.cdnfonts.com/css/star-wars" rel="stylesheet"> -->
+</head>
+<body>
+  <main class="container">
+    
+    <!-- Star Wars Logo -->
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Star_Wars_Logo.svg" alt="Star Wars Logo" style="width:300px;" />
+
+
+    <!-- Character Info Card -->
+    <section class="character-box" id="characterBox">
+      <p id="loading" class="hidden">
+        <i class="fas fa-spinner fa-spin"></i> Loading...
+      </p>
+
+      <p id="error" class="hidden">
+        ⚠️ Failed to load character. Please try again!
+      </p>
+
+      <h2 id="name"></h2>
+      <p><strong>Height:</strong> <span id="height"></span></p>
+      <p><strong>Gender:</strong> <span id="gender"></span></p>
+      <p><strong>Birth Year:</strong> <span id="birthYear"></span></p>
+      <p><strong>Home World:</strong> <span id="homeWorld"></span></p>
+    </section>
+
+    <!-- Action Button -->
+    <button id="btn">Find Someone</button>
+    
+  </main>
+
+  <!-- JS Script -->
+  <script src="script.js"></script>
+</body>
+</html>
+

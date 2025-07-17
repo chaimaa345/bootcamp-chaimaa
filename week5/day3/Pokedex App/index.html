@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pokedex</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="main-layout">
+    <!-- Left column: Logo -->
+    <div class="left-column">
+      <img src="logo.png" alt="Pokemon logo" class="logo" />
+    </div>
+
+    <!-- Center column: Pokedex -->
+    <div class="pokedex-container">
+      <img src="pokedex.png" alt="Pokedex" class="pokedex-img" />
+
+      <!-- Sprite -->
+      <img id="sprite" src="images/default.png" alt="Pokemon" class="pokemon-sprite" />
+
+      <!-- Info box -->
+      <div class="pokemon-info">
+        <h2 id="name">Pikachu</h2>
+        <p>Pokemon n° <span id="id">25</span></p>
+        <p>Height: <span id="height">4 cm</span></p>
+        <p>Weight: <span id="weight">60 gr</span></p>
+        <p>Type: <span id="type">electric</span></p>
+      </div>
+
+      <!-- Buttons on top of Pokédex -->
+      <div class="button-row">
+        <button id="random" class="green">🎲</button>
+        <button id="prev">⬅️</button>
+        <button id="next">➡️</button>
+      </div>
+    </div>
+
+    <!-- Right column: Instructions -->
+    <div class="right-column">
+      <h3>How to use:</h3>
+      <p><strong>1–</strong> Press the <span class="green-text">green</span> button to get a random Pokémon</p>
+      <p><strong>2–</strong> Press the <strong>left</strong> and <strong>right</strong> buttons to see previous and next Pokémon.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+

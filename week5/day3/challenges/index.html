@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Currency Converter</title>
+  <style>
+    body {
+      background-image: url('https://images.unsplash.com/photo-1627398242389-9b8f3e9d7a08'); /* example background */
+      background-size: cover;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .converter-container {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 30px;
+      border-radius: 10px;
+      color: white;
+      text-align: center;
+      width: 300px;
+    }
+    select, input, button {
+      width: 90%;
+      margin: 10px 0;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 15px;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <div class="converter-container">
+    <h1>Currency Converter</h1>
+
+    <label for="from-currency">From:</label>
+    <select id="from-currency"></select>
+
+    <label for="to-currency">To:</label>
+    <select id="to-currency"></select>
+
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" value="1" />
+
+    <button id="convert-btn">Convert</button>
+    <button id="switch-btn">Switch</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const apiKey = '756e08067508c369b64df85e'; // Replace with your actual API key
+    const fromSelect = document.getElementById('from-currency');
+    const toSelect = document.getElementById('to-currency');
+    const amountInput = document.getElementById('amount');
+    const resultDiv = document.getElementById('result');
+    const convertBtn = document.getElementById('convert-btn');
+    const switchBtn = document.getElementById('switch-btn');
+
+    async function loadCurrencies() {
+      try {
+        const response = await fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/codes`);
+        const data = await response.json();
+        const codes = data.supported_codes;
+
+        codes.forEach(([code, name]) => {
+          const optionFrom = document.createElement('option');
+          optionFrom.value = code;
+          optionFrom.textContent = `${code} - ${name}`;
+          fromSelect.appendChild(optionFrom);
+
+          const optionTo = document.createElement('option');
+          optionTo.value = code;
+          optionTo.textContent = `${code} - ${name}`;
+          toSelect.appendChild(optionTo);
+        });
+
+        fromSelect.value = 'USD';
+        toSelect.value = 'ILS';
+      } catch (error) {
+        console.error("Error loading currencies:", error);
+      }
+    }
+
+    async function convertCurrency() {
+      const from = fromSelect.value;
+      const to = toSelect.value;
+      const amount = parseFloat(amountInput.value);
+
+      if (!amount || amount <= 0) {
+        resultDiv.textContent = "Please enter a valid amount!";
+        return;
+      }
+
+      try {
+        const response = await fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/pair/${from}/${to}/${amount}`);
+        const data = await response.json();
+
+        if (data.conversion_result) {
+          resultDiv.textContent = `${data.conversion_result.toFixed(2)} ${to}`;
+        } else {
+          resultDiv.textContent = "Conversion failed. Please check currencies.";
+        }
+      } catch (error) {
+        console.error("Error converting currency:", error);
+        resultDiv.textContent = "Error fetching conversion data.";
+      }
+    }
+
+    function switchCurrencies() {
+      const temp = fromSelect.value;
+      fromSelect.value = toSelect.value;
+      toSelect.value = temp;
+    }
+
+    convertBtn.addEventListener('click', convertCurrency);
+    switchBtn.addEventListener('click', () => {
+      switchCurrencies();
+      convertCurrency();
+    });
+
+    loadCurrencies();
+  </script>
+</body>
+</html>
+

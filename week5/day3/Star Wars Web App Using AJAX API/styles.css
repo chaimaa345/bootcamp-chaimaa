@@ -1,0 +1,47 @@
+body {
+  background-image: url("2833951.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+  padding: 50px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+
+
+
+
+
+
+
+.logo {
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.character-box {
+  border: 2px solid yellow;
+  border-radius: 20px;
+  padding: 20px;
+  width: 300px;
+  margin: 0 auto 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 2px solid yellow;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
