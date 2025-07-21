@@ -1,0 +1,2 @@
+This is some important file content. 📄
+Node.js is reading this file.
