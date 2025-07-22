@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emoji Guessing Game</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 20px; }
+    #emoji { font-size: 5rem; margin: 20px; }
+    button { padding: 10px 20px; margin: 10px; font-size: 16px; cursor: pointer; }
+    #feedback { margin-top: 15px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>🎮 Emoji Guessing Game</h1>
+  <h2 id="score">Score: 0</h2>
+  <div id="emoji"></div>
+  <form id="guess-form"></form>
+  <div id="feedback"></div>
+
+  <script>
+    let currentEmojiId = null;
+
+    async function loadQuestion() {
+      const res = await fetch('/api/question');
+      const data = await res.json();
+
+      currentEmojiId = data.emojiId;
+      document.getElementById('emoji').textContent = data.emoji;
+      document.getElementById('score').textContent = `Score: ${data.score}`;
+      document.getElementById('feedback').textContent = '';
+
+      const form = document.getElementById('guess-form');
+      form.innerHTML = '';
+
+      data.options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.textContent = opt;
+        btn.type = 'submit';
+        btn.value = opt;
+
+        btn.onclick = async (e) => {
+          e.preventDefault();
+          const res = await fetch('/api/guess', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              guess: e.target.value,
+              emojiId: currentEmojiId
+            })
+          });
+          const result = await res.json();
+
+          document.getElementById('feedback').textContent =
+            result.correct ? '✅ Correct!' : `❌ Incorrect! Correct answer was ${result.correctAnswer}`;
+
+          document.getElementById('score').textContent = `Score: ${result.score}`;
+
+          setTimeout(loadQuestion, 1000);
+        };
+
+        form.appendChild(btn);
+      });
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
