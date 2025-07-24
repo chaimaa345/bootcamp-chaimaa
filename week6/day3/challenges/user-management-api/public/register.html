@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+</head>
+<body>
+  <h1>Register</h1>
+  <form id="registerForm">
+    <input type="text" id="name" placeholder="Name" required /><br />
+    <input type="text" id="lastname" placeholder="Last Name" required /><br />
+    <input type="email" id="email" placeholder="Email" required /><br />
+    <input type="text" id="username" placeholder="Username" required /><br />
+    <input type="password" id="password" placeholder="Password" required /><br />
+    <button type="submit" id="submitBtn" disabled>Register</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('registerForm');
+    const inputs = form.querySelectorAll('input');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('input', () => {
+      submitBtn.disabled = [...inputs].some(input => input.value.trim() === '');
+    });
+  </script>
+</body>
+</html>
